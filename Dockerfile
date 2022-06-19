@@ -7,6 +7,7 @@ RUN set -eux; \
 		pdns-backend-bind \
 		sqlite3 \
 		bind9-dnsutils \
+		inotify-tools \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
