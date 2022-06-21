@@ -18,4 +18,4 @@ VOLUME ["/var/lib/powerdns"]
 
 CMD /start.sh
 
-HEALTHCHECK CMD dig @127.0.0.1 || exit 1
+HEALTHCHECK CMD dig +timeout=1 @127.0.0.1 || exit 1
