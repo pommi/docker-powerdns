@@ -5,6 +5,11 @@
 * Bind backend support only
 * DNSSEC support (optional per zone)
 
+# Supported tags and respective `Dockerfile` links
+
+-	[`4.6-bookworm`, `latest`](https://github.com/pommi/docker-powerdns/blob/master/debian/12/Dockerfile)
+-	[`4.4-bullseye`](https://github.com/pommi/docker-powerdns/blob/master/debian/11/Dockerfile)
+
 # Usage
 
 ```
@@ -32,7 +37,7 @@ $ docker run -it \
     -v $(pwd)/named.conf:/etc/powerdns/named.conf \
     -v $(pwd)/zones/:/var/lib/powerdns/zones/ \
     -p 5353:53/udp -p 5353:53 \
-    pommib/powerdns:4.4-bullseye
+    pommib/powerdns:latest
 
 $ dig +short @127.0.0.1 -p5353 example.tld A
 192.0.2.1
@@ -46,7 +51,7 @@ version: "3"
 services:
   powerdns:
     container_name: powerdns
-    image: pommib/powerdns:4.4-bullseye
+    image: pommib/powerdns:latest
     ports:
       - "5353:53/tcp"
       - "5353:53/udp"
