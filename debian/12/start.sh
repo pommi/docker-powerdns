@@ -11,7 +11,7 @@ sed -i 's/^# bind-dnssec-db=/bind-dnssec-db=\/var\/lib\/powerdns\/bind-dnssec-db
 /usr/sbin/pdns_server --guardian=no --daemon=no --disable-syslog --log-timestamp=no --write-pid=no &
 
 # watch for zone changes
-inotifywait -mqre modify --exclude '\.git' --format '%w%f' "/var/lib/powerdns/zones/" |
+inotifywait -mqre modify --exclude '\.git' --exclude '.*\.swp' --format '%w%f' "/var/lib/powerdns/zones/" |
     while read -r path; do
         zone=$(basename $path)
         echo [$0] A modification was detected in $path
